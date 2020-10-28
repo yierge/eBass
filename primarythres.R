@@ -10,7 +10,7 @@ primarythres<-function(tdata,pdata,samp,breaks)#truebar,multipower)
   sort_zval<-thres$mat[,1]
   
   #calculate sensitivity and TDR(1-FDR)
-  TDR<-TPR<-c()
+    TDR<-TPR<-c()
   for (i in 1:length(sort_zval))
   {
     TDR[length(sort_zval)-i]<-p1*sum(f1[(length(sort_zval)-i):length(sort_zval)])/sum(f[(length(sort_zval)-i):length(sort_zval)])
