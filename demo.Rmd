@@ -184,7 +184,7 @@ results
 ```
 
 **Step 3**:
-Next we save the output and transport it to the MATLAB code. Since R markdown doesn't support MATLAB platform yet, we ran the script seperately and save one result to display here. The input values from R is same since the empirical Bayes estimation is not changed, but the cluster size threshold given from permutation test may vary slightly. This is caused by the randomness from permutation test.
+Next we save the output and transport it to the MATLAB code. Since R markdown doesn't support MATLAB platform yet, we ran the script seperately and save one result to display here. The input values from R is same since the empirical Bayes estimation is not changed, but the cluster size threshold given from permutation test may vary slightly. This is caused by the randomness from permutation test. To test the MATLAB, you simply need to download 'demo_run.m' and execute it. 
 ```{r echo=FALSE}
 writeMat('/Users/bright1/Dropbox/eBass/test.mat', x=as.matrix(results))
 ```
