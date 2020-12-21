@@ -1,5 +1,4 @@
 load('/Users/bright1/Dropbox/eBass/test.mat')
-
 load('/Users/bright1/Dropbox/eBass/sampledata.mat')
 
 for i=1:length(x)
@@ -11,7 +10,6 @@ perm_bound(i)=Tmin_perm(284);
 end
 
 final=max(find(fdr_bound<=perm_bound))
-
 ebass=x(final,1)
 
 
@@ -29,12 +27,15 @@ sig1d2=find(data2<=ebass);
     dd1=CC1.PixelIdxList(a1>=1);%dd is C_sig
     
     C_sig=dd1;
-    indices_ebass = vertcat(C_sig{1,a1>=perm_bound(final)});
-   TDR_ebass = sum(orgidx(indices_ebass))/length(intersect(indices_ebass,sig1d2))
- TPR_ebass = sum(orgidx(indices_ebass))/477
+    indices_ebass = vertcat(C_sig{1,a1>=perm_bound(final)});  %comment out if the underlying truth is unknown
+   TDR_ebass = sum(orgidx(indices_ebass))/length(intersect(indices_ebass,sig1d2)) %comment out if the underlying truth is unknown
+ TPR_ebass = sum(orgidx(indices_ebass))/477  %comment out if the underlying truth is unknown
 perm_boundbass=perm_bound(final);
     
- 
+%save final_out ebass perm_boundbass 
+%-----------------below is to check and compare the sensitivity and voxel-wise TDR------------
+
+
  [Tmax_fdr,Tmin_perm]=demofunc(data1,0.001,30,10,300);
 Tmin_perm=sort(Tmin_perm);
 
