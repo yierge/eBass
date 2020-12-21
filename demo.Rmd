@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r definition, echo = FALSE}
-primarythres<-function(tdata,pdata,samp,breaks)#truebar,multipower)
+primarythres<-function(tdata,samp,breaks)#truebar,multipower)
 {
   thres<-locfdr(tdata,bre=breaks,plot=0)#can add one more option on image output option
   p1f1<-thres$mat[,11]
@@ -157,7 +157,7 @@ tdata<-data$data3[1:10000]
 
 **Step 1**: Obtain the empirical Bayes estimation for prior probabilities, non-null and null distributions. The output includes a list of $\hat{z}$ with their corresponding Sensitivity, TDR, Objective Function, T-score, Primary Threshold. Function input: tdata = T-map obtained from the image (either from t-test or regression parameter); pdata = p-values corresponds to T-map; sample size per arm (ssample data set 30 subjects per arm); number of breaks in Bayes two component model estimation. Note that in this demo the sample data is simulated data from Gaussian distribution, using the default value for type=1 MLE can handle most of the situations. In real data analysis, you will need to preview the data and adjust the estimating methods accordingly. Similar for number of breaks and type.
 ```{r results = 'hide'}
-ebass_est<-primarythres(tdata,pdata,30,100)
+ebass_est<-primarythres(tdata,30,100)
 ```
 
 **Step 2**: Prepare the input for estimating the support $\Omega_\alpha$
