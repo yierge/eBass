@@ -74,8 +74,10 @@ The above steps are done in R with the function [primarythres.R](https://github.
      - The results from sample data include primary threshold (__PrmThres__), cluster-size threshold (__ClusThres__), sensitivity (__Sensitivity__) and TDR (__TDR__) for eBass and 0.001.
      
 ## Additional Information
+### Image
+Image of how the permutation bound and fdr bound goes with the thresholds on the support. X-axis shows the threshold (i.e. p-values) and Y-axis is the size of the cluster. In our demo, the last point where fdr bound equals permutation bound is when ebass=0.0018.
      
-     
+ ![alt text](https://github.com/yierge/eBass/blob/master/boundplot.png)    
      
      
      
