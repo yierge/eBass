@@ -29,12 +29,12 @@ The above steps are done in R with the function [primarythres.R](https://github.
     ```
     #we restricted the search region to p-value less than 0.02 since 0.01 is already considered liberal primary threshold but not totally unacceptable
     idx<-length(which(ebass_est[,5]<0.02))
-    sort_p<-sort(pdata)
+    sort_p<-sort(pdata)     
     vox_num<-fdr_cut<-loc<-results<-c()
     for (i in 1:idx)
     {
     vox_num[i]<-length(which(pdata<=ebass_est[i,5]))
-    loc[i]<-ceiling(vox_num[i]*(1-ebass_est[i,2]))
+    loc[i]<-ceiling(vox_num[i]*(1-ebass_est[i,2]))     
     fdr_cut[i]<-sort_p[loc[i]]
     }
     results<-as.data.frame(cbind(ebass_est[1:idx,5], fdr_cut,vox_num,loc,ebass_est[1:idx,3]))
@@ -49,18 +49,18 @@ The above steps are done in R with the function [primarythres.R](https://github.
     ```
     
 ### Part 3
-- ** Permutation test from MATLAB
+- **Permutation test from MATLAB**
      - Download the MATLAB script [demofunc.m](https://github.com/yierge/eBass/blob/master/demofunc.m) and [demo_run.m](https://github.com/yierge/eBass/blob/master/demo_run.m).
      - [demofunc.m](https://github.com/yierge/eBass/blob/master/demofunc.m) requires the inputs: image data on each voxels for all subjects, primary threshold, subjects per arm, number of false positive voxels, number of permutation tests. The output includes the cluster-size threshold of permutation test (at 5%) and false positive cluster-size bound (at 1% or max). 
      - In our sample data, image data on each voxels for all subjects is __data1__; primary threshold(s) is(are) given from Part1&2 output; subjects per arm is 30; number of false positive voxels is(are) given from Part1&2 output; number of permutation tests is 300.
-- ** Search for the cutoff
+- **Search for the cutoff**
      - demofunc.m was running within a potential for-loop (multiple T/Z scores in the search region).
      - Cutoff is given at the last T/Z score that satisfies fdr bound is less than or equal to permutation test bound.
      - The value __ebass__ is the eBass threshold.
      - The code under the comment line "%-----------------below is to check and compare the sensitivity and voxel-wise TDR------------" is used to calculate the sensitivity and voxel-wise TDR if the underlying truth is known. In our demo, the truth is known so we further match the findings with the truth.
      - For demo run, just change the file route at load() from line 1 (R output: test.mat) and line 2 (sampledata.mat) and run the script directly. 
      - If you are running your own data, comment out code following the instructions in the [demo_run.m](https://github.com/yierge/eBass/blob/master/demo_run.m).
-- ** Display the results
+- **Display the results**
      - Copy and paste the following code in R and change the route (/.../ part in readMat) to where 'final_out.mat' located.
      ```
      data_out <- readMat('/.../final_out.mat')
